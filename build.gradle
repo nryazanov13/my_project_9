@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.nryazanov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    testImplementation(
+            "com.codeborne:selenide:7.9.0",
+            "org.junit.jupiter:junit-jupiter:5.11.2",
+            "org.slf4j:slf4j-simple:2.0.17",
+            "com.github.javafaker:javafaker:1.0.2"
+    )
+}
+
+
+tasks.named('compileJava', JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('compileTestJava', JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('javadoc', Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnitPlatform()
+}
