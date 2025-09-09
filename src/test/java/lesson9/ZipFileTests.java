@@ -24,11 +24,10 @@ public class ZipFileTests {
 
     @Test
     @DisplayName("PDF файл: проверка содержимого и структуры")
-    void shouldContainValidPdfInZip() throws IOException {
+    void shouldContainValidPdfInZipTest() throws IOException {
         byte[] pdfBytes = extractFileFromZip("dummy.pdf");
         PDF pdf = new PDF(new ByteArrayInputStream(pdfBytes));
 
-        // Проверки прямо в тесте - для лучшей читаемости
         assertNotNull(pdf.text, "PDF должен содержать текст");
         assertTrue(pdf.text.contains("Dummy PDF file"), "PDF должен содержать заголовок");
         assertEquals(1, pdf.numberOfPages, "PDF должен иметь одну страницу");
@@ -36,11 +35,10 @@ public class ZipFileTests {
 
     @Test
     @DisplayName("Excel файл: проверка данных и структуры")
-    void shouldContainValidExcelInZip() throws IOException {
+    void shouldContainValidExcelInZipTest() throws IOException {
         byte[] excelBytes = extractFileFromZip("excelfile.xls");
         XLS xls = new XLS(new ByteArrayInputStream(excelBytes));
 
-        // Проверки прямо в тесте
         assertEquals("Sheet1", xls.excel.getSheetName(0), "Должна быть страница Sheet1");
         assertEquals("First Name", xls.excel.getSheetAt(0).getRow(0).getCell(1).getStringCellValue(), "Правильный заголовок");
         assertEquals("Dulce", xls.excel.getSheetAt(0).getRow(1).getCell(1).getStringCellValue(), "Правильные данные");
@@ -49,13 +47,12 @@ public class ZipFileTests {
 
     @Test
     @DisplayName("CSV файл: проверка структуры и данных")
-    void shouldContainValidCsvInZip() throws IOException, CsvException {
+    void shouldContainValidCsvInZipTest() throws IOException, CsvException {
         byte[] csvBytes = extractFileFromZip("csvfile.csv");
 
         try (CSVReader csvReader = new CSVReader(new InputStreamReader(new ByteArrayInputStream(csvBytes)))) {
             List<String[]> data = csvReader.readAll();
 
-            // Проверки прямо в тесте
             assertEquals(6, data.size(), "Должно быть 6 строк (заголовок + данные)");
             assertArrayEquals(new String[]{"id", "name", "email", "department", "salary"}, data.get(0), "Правильные заголовки");
             assertEquals("John Doe", data.get(1)[1], "Правильное имя в первой записи");
@@ -65,7 +62,7 @@ public class ZipFileTests {
 
     @Test
     @DisplayName("Архив должен содержать все ожидаемые файлы")
-    void shouldContainAllRequiredFilesInZip() throws IOException {
+    void shouldContainAllRequiredFilesInZipTest() throws IOException {
         try (InputStream archiveStream = cl.getResourceAsStream("ziparchive.zip")) {
             assert archiveStream != null;
             try (ZipInputStream zis = new ZipInputStream(archiveStream)) {
@@ -86,7 +83,7 @@ public class ZipFileTests {
         }
     }
 
-    // ВСПОМОГАТЕЛЬНЫЙ МЕТОД (только для извлечения - не для проверок)
+    // Вспомогательный метод для извлечения
     private byte[] extractFileFromZip(String fileName) throws IOException {
         try (InputStream archiveStream = cl.getResourceAsStream("ziparchive.zip")) {
             assert archiveStream != null;
