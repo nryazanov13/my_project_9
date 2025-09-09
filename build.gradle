@@ -12,10 +12,13 @@ repositories {
 
 dependencies {
     testImplementation(
-            "com.codeborne:selenide:7.9.0",
             "org.junit.jupiter:junit-jupiter:5.11.2",
             "org.slf4j:slf4j-simple:2.0.17",
-            "com.github.javafaker:javafaker:1.0.2"
+            "com.codeborne:pdf-test:1.8.1",
+            "com.codeborne:xls-test:1.7.2",
+            "com.opencsv:opencsv:5.10",
+            "org.apache.poi:poi:5.4.1",
+            "org.apache.poi:poi-ooxml:5.4.1"
     )
 }
 
