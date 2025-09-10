@@ -18,7 +18,8 @@ dependencies {
             "com.codeborne:xls-test:1.7.2",
             "com.opencsv:opencsv:5.10",
             "org.apache.poi:poi:5.4.1",
-            "org.apache.poi:poi-ooxml:5.4.1"
+            "org.apache.poi:poi-ooxml:5.4.1",
+            "com.fasterxml.jackson.core:jackson-databind:2.20.0"
     )
 }
 

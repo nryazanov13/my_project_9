@@ -1,0 +1,33 @@
+{
+  "application": "Test App",
+  "version": "1.0.0",
+  "users": [
+    {
+      "id": 101,
+      "username": "john_doe",
+      "email": "john@example.com",
+      "active": true,
+      "permissions": ["READ", "WRITE", "DELETE"],
+      "metadata": {
+        "createdAt": "2024-01-15",
+        "lastLogin": "2024-03-20"
+      }
+    },
+    {
+      "id": 102,
+      "username": "jane_smith",
+      "email": "jane@example.com",
+      "active": false,
+      "permissions": ["READ"],
+      "metadata": {
+        "createdAt": "2024-02-10",
+        "lastLogin": null
+      }
+    }
+  ],
+  "settings": {
+    "maxUsers": 100,
+    "theme": "DARK",
+    "featuresEnabled": ["AUTH", "LOGGING", "NOTIFICATIONS"]
+  }
+}
